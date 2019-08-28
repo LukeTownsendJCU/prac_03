@@ -3,13 +3,20 @@ MIN_LENGTH = 6
 
 def main():
 
-    password = input("Please enter your password: ")
-    while len(password) < MIN_LENGTH:
-        print("Password length must be 6 or more characters.")
-        password = input("Please enter your password: ")
+    password = get_password(MIN_LENGTH)
+    print_stars(password)
 
-    stars = len(password) * '*'
-    print(stars)
+
+def get_password(minimum_length):
+    password = input("Enter a password with at least {} characters: ".format(minimum_length))
+    while len(password) < MIN_LENGTH:
+        print("Password length must be {} or more characters.".format(minimum_length))
+        password = input("Enter a password with at least {} characters: ".format(minimum_length))
+    return password
+
+
+def print_stars(password_length):
+    print("*" * len(password_length))
 
 
 main()
